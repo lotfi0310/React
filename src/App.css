@@ -1,6 +1,10 @@
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
 .App {
   text-align: center;
+  
 }
+
 
 .App-logo {
   height: 40vmin;
@@ -35,4 +39,7 @@
   to {
     transform: rotate(360deg);
   }
+}
+.products{
+  padding:10%;
 }
