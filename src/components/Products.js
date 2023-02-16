@@ -6,21 +6,37 @@ import { Container, Row , Col } from 'react-bootstrap';
 
 
 export class Products extends React.Component {
+
+  constructor(props){
+    super(props);
+    this.state={
+      color:"green" 
+    }
+  }
+
+  componentDidMount(){
+  }
+   buyProd=(produit)=>{
+this.setState(()=>({
+
+}))
+   }
+
     render() {
        return(
-        
 
-<> 
-<Container className='products'>
+<Container>
+  
   <Row>
-    <Col>
     {data.map((prod,index)=>(
+      <Col key={index} md={4}>
     <Product
-  key={index}
-  produit={prod}/>
+  produit={prod}
+  buyProduit={this.buyProd}/>
+  </Col>
   ))}
-    </Col>
   </Row>
+  
 </Container>
 
  
@@ -28,7 +44,7 @@ export class Products extends React.Component {
    
 
 
-</>);
+);
          }
     
   }

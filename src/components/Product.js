@@ -1,50 +1,75 @@
 
 import React, { Component } from 'react';
-import {Button, Card, Container} from 'react-bootstrap';
+import {Alert, Button, Card} from 'react-bootstrap';
 import {Row,Col} from 'react-bootstrap'
+import CardHeader from 'react-bootstrap/esm/CardHeader';
  export default class Product extends Component {
  constructor(props){
-  super();
+  super(props);
   this.state ={
-     likes :0
+    produit :this.props.produit,
+    show:false
+    
   };
+ }
+ likeProduct= (e)=>{
+  e.preventDefault();
+  this.setState((oldState)=>({produit:{...oldState.produit,like:oldState.produit.like+1}}));  
+ }
+ buyProduct=(e)=>{
+e.preventDefault();
+this.setState((oldState)=>({produit:{...oldState.produit,quantity:oldState.produit.quantity-1}}));
+
+  this.setState({ show: true });
+  setTimeout(() => {
+    this.setState({ show: false });
+  }, 2000);
+
  }
     render() {
       return (
-<> 
-       <Card >
-
-              <Card.Body >
-              <Card.Img src={require('../assets/images/'+this.props.produit.img)}/>
+       <Card style={{width:'18rem' ,margin:'10%'}} className="text-center" border='secondary'>
+        <CardHeader>
+        <Card.Img src={require('../assets/images/'+this.props.produit.img)}/>
+        </CardHeader>
+              <Card.Body>
                 <Card.Title>{this.props.produit.name}</Card.Title>
                 <Card.Text>
                   { this.props.produit.description}
                   <br/>
                   <br/>
-                  {this.props.produit.price+'dt'}
+                  <Row>
+                    <Col md={6}>
+                    {this.props.produit.price+'dt'}
+                    </Col>
+                    <Col md={6}>
+                    {this.props.produit.quantity}
+
+                    </Col>
+                  </Row>
+                 
                 </Card.Text>
-              </Card.Body>
-           <Container >
-            <Row>
-              <Col> 
-               <Button  style={{width:'20%' ,display:'flex' ,justifyContent:'space-between',marginLeft:'35%',flexDirection:'row',marginBottom:'3%'}}
-                onClick ={
-                  ()=>{
-                    this.setState({ likes: this.state.likes+1 });
-                    }} >
-                Like {this.state.likes}
+                <Row>
+              <Col md={6}> 
+               <Button  onClick={this.likeProduct} disabled={this.state.produit.like===5}
+               >
+             Like:{this.state.produit.like}
               </Button>
               </Col>
-              <Col>
-              <Button style={{backgroundColor: '#00FFFF',width:'20%' ,display:'flex' ,justifyContent:'space-between',flexDirection:'row',marginBottom:'3%'}}>Buy</Button>
+              <Col md={6}>
+              <Button variant='success' onClick={this.buyProduct} disabled={this.state.produit.quantity===0}>Buy</Button>
+              quantity:{this.state.produit.quantity}
+
               </Col>
             </Row>
-           </Container>
+              </Card.Body>
+              <Alert show={this.state.show} variant="primary">You bought the Item named {this.state.produit.name}</Alert>
+
+            
             
              
        </Card>
     
-</>   
         
           
         
