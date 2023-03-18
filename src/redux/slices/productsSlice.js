@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getallProducts } from "../../api/db" ;
+import { getallProducts } from "../../services/api" ;
 let initialState = {
 products: [],
 selectedProduct: {},

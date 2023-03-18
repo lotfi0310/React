@@ -25,6 +25,15 @@
       "quantity": "20",
       "description": "thn",
       "id": 1
+    },
+    {
+      "name": "pc Asus",
+      "price": "15070",
+      "img": "product1.webp",
+      "like": 0,
+      "quantity": "22",
+      "description": "tuff",
+      "id": 2
     }
   ]
 }

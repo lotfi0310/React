@@ -22,7 +22,7 @@ const  Products = () => {
 
   return (
     <>
-      <NavigationBar/>
+    
       <Container>      
         <Row>
           {products.map((prod, index) => (
