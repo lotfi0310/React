@@ -6,8 +6,8 @@ function  NavigationBar(){
   return (
     <Navbar bg="light" variant="light">
       <Navbar.Brand href='products'>MyStore</Navbar.Brand>
-      <Nav>
-        <Nav.Item>
+      <Nav  style={{display:'flex',justifyContent:'center',alignItems:'center' }}>
+        <Nav.Item >
           <NavLink
             to="/products"
              style={({isActive})=>({
@@ -18,14 +18,16 @@ function  NavigationBar(){
           </NavLink>
          
         </Nav.Item>
-        <Nav.Item >
-        <NavLink
-         as={NavLink}
-         to="/products/add"
-         style={({ isActive }) => ({
-           textDecoration: isActive && "underline",
-         })} >add Product</NavLink>
-        </Nav.Item>
+        <Nav.Item  >
+       
+          <NavLink 
+           style={({isActive})=>({
+            color : isActive ? "gray":"black"})}
+            to="/products/add"
+        >add Product</NavLink>
+          </Nav.Item>
+       
+     
       </Nav>
     </Navbar>
 

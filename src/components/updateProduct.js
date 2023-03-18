@@ -24,19 +24,21 @@ export default function UpdateProduct(props) {
     
   useEffect(() => {
     loadProductData();
-  });
+  }, []);
 
   const loadProductData = async () => {
     const response = await getallProducts(id);
     setProduct(response.data);
   };
   const navigate = useNavigate();
-  const handleChange = (e) => {
-    setProduct({ ...Product, [e.target.name]: e.target.value });
+  const handleChange = (event) => {
+    event.preventDefault();
+    setProduct({ ...Product, [event.target.name]: event.target.value });
     console.log(Product);
   };
-  const handleChangeFile = (e) => {
-    setProduct({ ...Product, img: e.target.files[0].name });
+  const handleChangeFile = (event) => {
+    event.preventDefault();
+    setProduct({ ...Product, img:event.target.files[0].name  });
     console.log(Product);
   };
   const edit = (e) => {
@@ -50,11 +52,11 @@ export default function UpdateProduct(props) {
         <Form.Group className="mb-3">
           <Form.Label>Name</Form.Label>
           <Form.Control
-            as="textarea"
+         
             type="text"
             value={Product.name}
             name="name"
-            onChange={(e) => handleChange(e)}
+            onChange={handleChange}
           />
         </Form.Group>
 
@@ -64,7 +66,7 @@ export default function UpdateProduct(props) {
             type="text"
             value={Product.description}
             name="description"
-            onChange={(e) => handleChange(e)}
+            onChange={handleChange}
           />
         </Form.Group>
         <Form.Group className="mb-3">
@@ -73,7 +75,7 @@ export default function UpdateProduct(props) {
             type="number"
             name="price"
             value={Product.price}
-            onChange={(e) => handleChange(e)}
+            onChange={handleChange}
           />
         </Form.Group>
         <Form.Group className="mb-3">
@@ -82,7 +84,7 @@ export default function UpdateProduct(props) {
             type="number"
             name="quantity"
             value={Product.quantity}
-            onChange={(e) => handleChange(e)}
+            onChange={handleChange}
           />
 
 
@@ -93,7 +95,7 @@ export default function UpdateProduct(props) {
           <Form.Control
             type="file"
             name="img"
-            onChange={(e) => handleChangeFile(e)}
+            onChange={handleChangeFile}
           />
         </Form.Group>
         <Button variant="primary" type="submit" onClick={edit}>

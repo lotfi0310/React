@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row , Col } from 'react-bootstrap';
+import { Container, Row , Col, Button } from 'react-bootstrap';
 import NavigationBar from './navbar';
 import Product from './Product';
 import { getallProducts } from '../services/api';
@@ -31,6 +31,8 @@ const  Products = () => {
             </Col>
           ))}
         </Row>
+       
+       
       </Container>
     </>
   );

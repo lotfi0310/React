@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, Card } from 'react-bootstrap';
+import { Button, Card, Col, Container, Row } from 'react-bootstrap';
 import { useNavigate, useParams } from 'react-router-dom';
 import { getallProducts } from '../services/api';
 
@@ -21,7 +21,11 @@ function ProductDetails() {
     <>
       {product ? (
         <>
-          <Card style={{ width: "20em" }} class="bestProduct">
+        <Container >
+          <Row className='justify-content-center'>
+            <Col md={6}>
+
+            <Card style={{ width: "35em" , marginTop:'5%' }} class="bestProduct">
             <Card.Img
               variant="top"
               src={require("../assets/images/" + product.img)}
@@ -36,13 +40,23 @@ function ProductDetails() {
                 return to products
               </Button>
             </Card.Body>
-            <Button onClick={()=>
-             navigate(`/products/edit/${product.id}`)
-              } >Update</Button>
+           
           </Card>
+
+            </Col>
+          </Row>
+        </Container>
+        
         </>
       ) : (
-        <h2>product does not exist</h2>
+        <Container  >
+          <Row classname="justify-content-center"style={{backgroundColor:'red'}}>
+            <Col md={6}>
+            <h1 style={{textAlign:'center' , padding:'5%'}}>product does not exist</h1>
+            </Col>
+          </Row>
+        </Container>
+      
       )}
     </>
   );
