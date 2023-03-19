@@ -48,11 +48,8 @@ state.errors = action.payload;
 });
 export const fetchProducts = () => async (dispatch) => {
 getallProducts()
-
 .then((response)=>{dispatch(populateProducts(response.data));dispatch(setErrors(null))})
-
 .catch((error)=>dispatch(setErrors(error)));
-
 };
 export const selectProducts = (state) => {
 return [state.products.products, state.products.errors];

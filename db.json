@@ -18,15 +18,6 @@
   },
   "products": [
     {
-      "name": "msi",
-      "price": "1500",
-      "img": "product1.webp",
-      "like": 0,
-      "quantity": "20",
-      "description": "thn",
-      "id": 1
-    },
-    {
       "name": "pc Asus",
       "price": "15070",
       "img": "product1.webp",
@@ -34,6 +25,15 @@
       "quantity": "22",
       "description": "tuff",
       "id": 2
+    },
+    {
+      "name": "llll",
+      "price": "150000",
+      "img": "product2.jpg",
+      "like": 0,
+      "quantity": "848",
+      "description": "thn",
+      "id": 3
     }
   ]
 }

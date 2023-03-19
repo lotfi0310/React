@@ -1,20 +1,18 @@
 import React, { useState, useEffect } from 'react';
-import { Container, Row , Col, Button } from 'react-bootstrap';
-import NavigationBar from './navbar';
+import { Container, Row , Col } from 'react-bootstrap';
 import Product from './Product';
 import { getallProducts } from '../services/api';
+import { useSelector } from 'react-redux';
+import { fetchProducts, selectProduct, selectProducts } from '../redux/slices/productsSlice';
+import { useDispatch } from 'react-redux';
 
 const  Products = () => {
   const [color, setColor] = useState("green");
-  const [products, setProducts] = useState([]);
-
+  const [products, errors] = useSelector(selectProducts);
+  const dispatch=useDispatch();
   useEffect(() => {
-    const fetchData = async () => {
-      const response = await getallProducts();
-      setProducts(response.data);
-    };
-    fetchData();
-  }, []);
+      dispatch(fetchProducts());    
+  }, [dispatch]);
 
   const buyProd = (produit) => {
     setColor("red");
